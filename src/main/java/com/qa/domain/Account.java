@@ -13,6 +13,10 @@ public class Account {
 	private String firstName;
 	private String secondName;
 	private String accountNumber;
+	
+	public Account() {
+		
+	}
 
 	public Account(String firstName, String secondName, String accountNumber) {
 		this.firstName = firstName;

@@ -11,11 +11,16 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import org.apache.log4j.Logger;
+
 import com.qa.domain.Account;
+import com.qa.interpolation.AccountEndPoint;
 import com.qa.util.JSONUtil;
 
 @Transactional(SUPPORTS)
 public class AccountDBRepository {
+	
+	private static final Logger LOGGER = Logger.getLogger(AccountEndPoint.class);
 
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;
@@ -23,8 +28,11 @@ public class AccountDBRepository {
 	@Inject
 	private JSONUtil util;
 
+	
 	public String getAllAccounts() {
+		LOGGER.info("AccountDBRepository getAllAccounts");
 		Query query = manager.createQuery("Select a FROM Account a");
+		LOGGER.info("AccountDBRepository getAllAccounts getAllAccounts Query");
 		Collection<Account> accounts = (Collection<Account>) query.getResultList();
 		return util.getJSONForObject(accounts);
 	}
