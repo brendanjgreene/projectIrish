@@ -17,6 +17,8 @@ import com.qa.service.repository.AccountDBRepository;
 @Path("/account")
 public class AccountEndPoint {
 	
+	///comment to check git hub
+	
 	private static final Logger LOGGER = Logger.getLogger(AccountEndPoint.class);
 
 	@Inject
